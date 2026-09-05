@@ -79,8 +79,20 @@ function showGate(){
   document.getElementById("guideApp").classList.add("is-hidden");
 }
 
-async function syncLead({completed=false}={}){
+async function syncLead({completed=false, shareSummary=false}={}){
   if(!lead?.email || !lead?.name) throw new Error("Faltan datos de contacto.");
+
+  const structuredSummary = shareSummary ? {
+    needs: state.needs || [],
+    more: state.more || [],
+    less: state.less || [],
+    values: state.values || [],
+    priorityArea: state.step1_priority || "",
+    nextStep: state.step5_next || "",
+    actions: state.actions || [],
+    targetDate: state.step5_date || ""
+  } : null;
+
   const response = await fetch("/api/brevo-contact", {
     method:"POST",
     headers:{"Content-Type":"application/json"},
@@ -89,6 +101,8 @@ async function syncLead({completed=false}={}){
       email: lead.email,
       notesQvb: Boolean(lead.notesQvb),
       guideCompleted: Boolean(completed),
+      shareSummary: Boolean(shareSummary),
+      summary: structuredSummary,
       website: ""
     })
   });
@@ -180,8 +194,11 @@ function render(){
     btn.disabled=true;
     btn.textContent="GUARDANDO…";
     try{
-      await syncLead({completed:true});
-      if(status) status.textContent="✓ Guía completada y registrada en QVB";
+      const shareSummary = Boolean(document.getElementById("shareSummaryConsent")?.checked);
+      await syncLead({completed:true, shareSummary});
+      if(status) status.textContent = shareSummary
+        ? "✓ Guía completada y resumen compartido con QVB"
+        : "✓ Guía completada. Tus respuestas permanecen privadas.";
       btn.textContent="✓ FINALIZADA";
     }catch{
       if(status) status.textContent="Tu guía quedó guardada en este dispositivo. El registro online no pudo actualizarse.";
