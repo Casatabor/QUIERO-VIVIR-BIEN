@@ -1,1 +1,240 @@
-<!-- temporal -->
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>¿Y ahora qué? · Guía interactiva QVB</title>
+  <meta name="description" content="Una guía interactiva de Quiero Vivir Bien para ayudarte a identificar dónde estás y cuál podría ser tu próximo paso." />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">QVB</div>
+        <div class="brand-name">QUIERO VIVIR BIEN</div>
+        <div class="brand-tag">UNA VIDA Y UNA CARRERA<br>QUE SE SIENTAN TUYAS</div>
+      </div>
+
+      <nav id="stepNav" class="step-nav" aria-label="Secciones de la guía"></nav>
+
+      <div class="quote-card">
+        <p>No necesitas<br>tener todo resuelto<br>para empezar.</p>
+      </div>
+
+      <div class="contact-mini">
+        <strong>¿Dudas?</strong>
+        <span>Escríbeme por WhatsApp</span>
+        <a href="https://wa.me/56962261085?text=Hola%20Catalina%2C%20llegu%C3%A9%20desde%20la%20gu%C3%ADa%20QVB%20y%20quer%C3%ADa%20hacerte%20una%20pregunta." target="_blank" rel="noopener">
+          +56 9 6226 1085
+        </a>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div><strong>¿Y AHORA QUÉ?</strong><span class="divider">|</span> UNA GUÍA INTERACTIVA DE QVB</div>
+        <div class="progress-wrap">
+          <span>Tu progreso: <strong id="progressLabel">20%</strong></span>
+          <div class="progress"><div id="progressBar" class="progress-bar"></div></div>
+        </div>
+        <button id="saveBtn" class="ghost-btn">♡ Guardar y continuar más tarde</button>
+      </header>
+
+      <section id="stepContainer" class="content-grid">
+        <!-- contenido dinámico -->
+      </section>
+    </main>
+  </div>
+
+  <template id="step1">
+    <article class="panel main-panel">
+      <div class="section-kicker">PRIMERA PARTE</div>
+      <div class="headline-row">
+        <span class="step-badge">01</span>
+        <div>
+          <h1>Mira dónde estás.</h1>
+          <p class="lead">Tomar una foto honesta de tu presente es el primer paso para avanzar.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>1. Del 1 al 5, ¿cómo se siente hoy cada área?</h2>
+        <div id="ratingTable" class="rating-table"></div>
+      </div>
+
+      <div class="card">
+        <h2>2. ¿Qué te dice esta foto de tu momento actual?</h2>
+        <p class="helper">Puedes escribir libremente aquí. ¿Qué patrones ves? ¿Qué te sorprende?</p>
+        <textarea data-save="step1_reflection" placeholder="Escribe aquí..."></textarea>
+      </div>
+
+      <div class="card">
+        <h2>3. Para terminar esta sección…</h2>
+        <p class="helper">Si durante los próximos 3 meses pudieras mejorar solo UNA de estas áreas, ¿cuál tendría mayor impacto en tu vida o carrera?</p>
+        <select data-save="step1_priority">
+          <option value="">Selecciona una opción</option>
+          <option>Vida personal</option>
+          <option>Carrera / trabajo</option>
+          <option>Formación y competencias</option>
+          <option>Crecimiento y aprendizaje</option>
+          <option>Claridad sobre lo que quiero</option>
+          <option>Energía para hacer cambios</option>
+          <option>Oportunidades para avanzar</option>
+          <option>Definir mi próximo paso</option>
+        </select>
+      </div>
+    </article>
+
+    <aside class="right-rail">
+      <div class="quote-side">“La claridad no siempre llega como una respuesta, sino como una mejor pregunta.”<span>— QVB</span></div>
+      <div class="tip-card"><strong>TIP QVB</strong><p>No busques la perfección en tus respuestas. Busca honestidad. Eso ya es un gran paso.</p></div>
+      <div class="visual-card">Estás aquí.<br>Y eso también<br>es parte del camino.</div>
+    </aside>
+  </template>
+
+  <template id="step2">
+    <article class="panel main-panel">
+      <div class="headline-row">
+        <span class="step-badge">02</span>
+        <div>
+          <h1>Qué quiero (más y menos).</h1>
+          <p class="lead">A veces no sabemos exactamente qué necesitamos hasta que vemos las opciones delante.</p>
+        </div>
+      </div>
+
+      <div class="split">
+        <div class="card">
+          <h2>Quiero MÁS…</h2>
+          <p class="helper">Marca todo lo que te gustaría que estuviera más presente en tu próxima etapa.</p>
+          <div id="moreOptions" class="check-grid"></div>
+        </div>
+        <div class="card blush">
+          <h2>Quiero MENOS…</h2>
+          <p class="helper">Marca lo que ya no quieres seguir sosteniendo igual.</p>
+          <div id="lessOptions" class="check-grid"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>¿Qué te sorprende de lo que marcaste?</h2>
+        <textarea data-save="step2_reflection" placeholder="¿Hay algo que no habías puesto en palabras?"></textarea>
+      </div>
+    </article>
+
+    <aside class="right-rail">
+      <div class="quote-side">“Abrir posibilidades también es avanzar.”<span>— QVB</span></div>
+      <div class="tip-card"><strong>TIP QVB</strong><p>No necesitas elegir una sola cosa todavía. Primero observa qué se repite.</p></div>
+    </aside>
+  </template>
+
+  <template id="step3">
+    <article class="panel main-panel">
+      <div class="headline-row">
+        <span class="step-badge">03</span>
+        <div>
+          <h1>Ahora mira lo que marcaste.</h1>
+          <p class="lead">¿Dónde parece estar hoy tu principal necesidad? Marca hasta 2.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div id="needOptions" class="need-list"></div>
+      </div>
+
+      <div class="card soft">
+        <h2>Si durante los próximos 3 meses pudieras mejorar solo UNA de esas áreas, ¿cuál haría que tu vida o carrera se sintiera más tuya?</h2>
+        <textarea data-save="step3_focus" placeholder="Escribe tu respuesta..."></textarea>
+      </div>
+    </article>
+
+    <aside class="right-rail">
+      <div class="quote-side">“No todo cambio empieza con una decisión. A veces empieza con una dirección.”<span>— QVB</span></div>
+    </aside>
+  </template>
+
+  <template id="step4">
+    <article class="panel main-panel">
+      <div class="headline-row">
+        <span class="step-badge">04</span>
+        <div>
+          <h1>Tu brújula.</h1>
+          <p class="lead">Elige 5 palabras que quieras que estén presentes en tu próxima etapa.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div id="valuesOptions" class="pill-grid"></div>
+        <p id="valuesCounter" class="counter">0 de 5 seleccionadas</p>
+      </div>
+
+      <div class="card">
+        <h2>Tres preguntas para conectar con lo que realmente importa:</h2>
+        <label class="prompt">1. ¿Qué de tu vida actual sí quieres llevar contigo a tu próxima etapa?
+          <textarea data-save="step4_q1"></textarea>
+        </label>
+        <label class="prompt">2. ¿Qué estás manteniendo porque realmente lo quieres y qué mantienes porque sientes que “deberías”?
+          <textarea data-save="step4_q2"></textarea>
+        </label>
+        <label class="prompt">3. Si nadie opinara sobre tu decisión, ¿qué posibilidad te darías permiso de explorar?
+          <textarea data-save="step4_q3"></textarea>
+        </label>
+      </div>
+    </article>
+
+    <aside class="right-rail">
+      <div class="quote-side">“Tu próximo paso no tiene que impresionar a nadie. Tiene que tener sentido para ti.”<span>— QVB</span></div>
+    </aside>
+  </template>
+
+  <template id="step5">
+    <article class="panel main-panel">
+      <div class="headline-row">
+        <span class="step-badge">05</span>
+        <div>
+          <h1>¿Y ahora qué?</h1>
+          <p class="lead">No necesitas un plan para los próximos 10 años. Necesitas un próximo paso.</p>
+        </div>
+      </div>
+
+      <div class="card highlight">
+        <h2>LA PREGUNTA QVB</h2>
+        <p>Si no tuvieras que tener todo resuelto, ¿cuál sería el siguiente paso que sí podrías dar?</p>
+        <textarea data-save="step5_next" placeholder="Mi próximo paso podría ser..."></textarea>
+      </div>
+
+      <div class="split">
+        <div class="card">
+          <h2>Durante los próximos 7 días voy a:</h2>
+          <div id="actionOptions" class="check-grid"></div>
+        </div>
+        <div class="card">
+          <h2>Lo haré antes del:</h2>
+          <input type="date" data-save="step5_date" />
+          <div class="mini-note">Un paso a la vez también es progreso.</div>
+        </div>
+      </div>
+
+      <div class="card result-card">
+        <h2>Tu mini resumen QVB</h2>
+        <p id="summaryText">Cuando completes la guía, aquí verás tus principales elecciones.</p>
+        <button id="copySummaryBtn" class="ghost-btn">Copiar resumen</button>
+      </div>
+
+      <div class="cta-card">
+        <div>
+          <span>¿Quieres conversar sobre tu próximo paso?</span>
+          <strong>PRIMER ENCUENTRO · 30 MIN · ONLINE · GRATIS</strong>
+        </div>
+        <a class="primary-btn" target="_blank" rel="noopener" href="https://calendly.com/cacea-cepal/30min">AGENDA TU ENCUENTRO →</a>
+      </div>
+    </article>
+
+    <aside class="right-rail">
+      <div class="quote-side">“Quizás todavía no sabes exactamente dónde vas. Está bien. A veces claridad significa saber cuál es el siguiente paso que quieres probar.”<span>— QVB</span></div>
+    </aside>
+  </template>
+
+  <script src="./script.js"></script>
+</body>
+</html>
