@@ -1,240 +1,369 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>¿Y ahora qué? · Guía interactiva QVB</title>
-  <meta name="description" content="Una guía interactiva de Quiero Vivir Bien para ayudarte a identificar dónde estás y cuál podría ser tu próximo paso." />
-  <link rel="stylesheet" href="./styles.css" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quiero Vivir Bien · Catalina Cea</title>
+<meta name="description" content="Life & Career Coaching. Una vida y una carrera que se sientan tuyas.">
+<meta name="theme-color" content="#F2ECE2">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="app-shell">
-    <aside class="sidebar">
-      <div class="brand">
-        <div class="brand-mark">QVB</div>
-        <div class="brand-name">QUIERO VIVIR BIEN</div>
-        <div class="brand-tag">UNA VIDA Y UNA CARRERA<br>QUE SE SIENTAN TUYAS</div>
+<div class="grain"></div>
+
+<header class="site-header">
+  <a class="logo" href="#inicio"><span>QVB</span><small>QUIERO VIVIR BIEN</small></a>
+  <button class="hamb" aria-label="Abrir menú">☰</button>
+  <nav>
+    <a href="#sobre-mi">Sobre mí</a>
+    <a href="#recursos">Recursos</a>
+    <a href="#sesiones">Sesiones</a>
+    <a href="#faq">FAQ</a>
+    <a class="agenda" href="#agenda">Agenda aquí <span>→</span></a>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+  <div class="hero-left">
+    <p class="overline">LIFE & CAREER COACHING · BY CATALINA CEA</p>
+    <h1>Una vida<br>y una carrera<br>que se sientan <em>tuyas.</em></h1>
+    <p class="lead">No necesitas tener todas las respuestas. A veces necesitas el espacio, las preguntas y las herramientas correctas para encontrar tu próximo paso.</p>
+    <div class="hero-cta">
+      <a class="button" href="#agenda">Empieza por ti <span>→</span></a>
+      <a class="under" href="#sesiones">Ver sesiones</a>
+    </div>
+  </div>
+  <div class="hero-art">
+    <div class="arch"></div>
+    <div class="note note-a"><small>01 / CLARIDAD</small><b>¿Dónde estoy?</b></div>
+    <div class="note note-b"><small>02 / DIRECCIÓN</small><b>¿Qué quiero?</b></div>
+    <div class="note note-c"><small>03 / ACCIÓN</small><b>¿Cuál es mi próximo paso?</b></div>
+    <div class="paper">
+      <span class="paper-top">QVB · TU MAPA</span>
+      <h2>No voy a darte<br>un mapa.</h2>
+      <p>Vamos a construir el tuyo.</p>
+      <div class="path">
+        <i></i><span>ESCUCHAR</span><i></i><span>EXPLORAR</span><i></i><span>DEFINIR</span><i></i><span>ACTUAR</span>
       </div>
+    </div>
+    <span class="scribble">empieza por ti ↗</span>
+  </div>
+</section>
 
-      <nav id="stepNav" class="step-nav" aria-label="Secciones de la guía"></nav>
+<section class="ticker">
+  <div>VIDA <span>✦</span> CARRERA <span>✦</span> DECISIONES <span>✦</span> MUNDO <span>✦</span> CLARIDAD <span>✦</span> ACCIÓN</div>
+</section>
 
-      <div class="quote-card">
-        <p>No necesitas<br>tener todo resuelto<br>para empezar.</p>
-      </div>
+<section class="about section about-v6" id="sobre-mi">
+  <div class="section-label">01 · SOBRE MÍ</div>
 
-      <div class="contact-mini">
-        <strong>¿Dudas?</strong>
-        <span>Escríbeme por WhatsApp</span>
-        <a href="https://wa.me/56962261085?text=Hola%20Catalina%2C%20llegu%C3%A9%20desde%20la%20gu%C3%ADa%20QVB%20y%20quer%C3%ADa%20hacerte%20una%20pregunta." target="_blank" rel="noopener">
-          +56 9 6226 1085
-        </a>
-      </div>
-    </aside>
-
-    <main class="main">
-      <header class="topbar">
-        <div><strong>¿Y AHORA QUÉ?</strong><span class="divider">|</span> UNA GUÍA INTERACTIVA DE QVB</div>
-        <div class="progress-wrap">
-          <span>Tu progreso: <strong id="progressLabel">20%</strong></span>
-          <div class="progress"><div id="progressBar" class="progress-bar"></div></div>
-        </div>
-        <button id="saveBtn" class="ghost-btn">♡ Guardar y continuar más tarde</button>
-      </header>
-
-      <section id="stepContainer" class="content-grid">
-        <!-- contenido dinámico -->
-      </section>
-    </main>
+  <div class="about-intro-v6">
+    <div class="portrait-editorial">
+      <div class="portrait-frame"><img src="assets/catalina-portrait.png" alt="Catalina Cea, Life & Career Coach"></div>
+      <span class="portrait-tag">CATALINA CEA · LIFE & CAREER COACH</span>
+      <span class="portrait-script">hola, soy Catalina.</span>
+    </div>
+    <div class="about-story-v6">
+      <p class="eyebrow">LA PERSONA DETRÁS DE QVB</p>
+      <h2>Mi carrera ha pasado por muchos mundos. <em>Y eso es parte de lo que traigo a cada sesión.</em></h2>
+      <p class="about-big-v6">Soy cientista política, especialista en relaciones internacionales y Life & Career Coach. He trabajado entre investigación, proyectos humanitarios, educación superior y cooperación internacional.</p>
+      <p>Después de años acompañando personas, universidades y proyectos, entendí algo que terminó dando forma a Quiero Vivir Bien: una trayectoria puede verse muy bien desde afuera y aun así llegar un momento en que necesites preguntarte qué quieres tú.</p>
+      <blockquote>“No estoy aquí para decirte qué hacer con tu vida. Estoy aquí para ayudarte a descubrir qué quieres hacer tú con ella.”</blockquote>
+      <div class="about-actions"><a class="button" href="https://www.linkedin.com/in/catalina-cea-marchini/" target="_blank" rel="noopener">Ver mi LinkedIn ↗</a><a class="under" href="#agenda">Conversemos →</a></div>
+    </div>
   </div>
 
-  <template id="step1">
-    <article class="panel main-panel">
-      <div class="section-kicker">PRIMERA PARTE</div>
-      <div class="headline-row">
-        <span class="step-badge">01</span>
-        <div>
-          <h1>Mira dónde estás.</h1>
-          <p class="lead">Tomar una foto honesta de tu presente es el primer paso para avanzar.</p>
-        </div>
-      </div>
+  <div class="journey-v6">
+    <div class="journey-head"><p class="eyebrow">MI CAMINO</p><h3>Formación, experiencia<br>y una mirada <em>global.</em></h3><p>No es una lista de logos. Es el camino que construyó mi forma de mirar personas, decisiones y oportunidades.</p></div>
+    <div class="journey-cards">
+      <article class="journey-card academic"><img src="assets/catalina-graduation.png" alt="Catalina Cea con sus títulos de la Pontificia Universidad Católica de Chile"><div><span>01 · FORMACIÓN</span><h4>De la Ciencia Política a las Relaciones Internacionales</h4><p>Licenciatura en Ciencia Política y Ciencias Sociales y Magíster en Ciencia Política, mención Relaciones Internacionales, en la Pontificia Universidad Católica de Chile.</p></div></article>
+      <article class="journey-card peace"><div class="journey-text"><span>02 · PAZ & MIRADA GLOBAL</span><h4>Estudiar el mundo para entender mejor a las personas</h4><p>Máster de Formación Permanente en Estudios de la Tolerancia y la Paz Mundial por UCAM, junto con formación y experiencias internacionales que ampliaron mi manera de entender contextos, culturas y decisiones.</p></div><img src="assets/catalina-global-life.png" alt="Catalina Cea en un contexto internacional"></article>
+    </div>
+  </div>
 
-      <div class="card">
-        <h2>1. Del 1 al 5, ¿cómo se siente hoy cada área?</h2>
-        <div id="ratingTable" class="rating-table"></div>
-      </div>
+  <div class="experience-v6">
+    <div class="exp-title"><span class="eyebrow">TRAYECTORIA PROFESIONAL</span><h3>Investigar. Conectar.<br>Acompañar. <em>Construir.</em></h3></div>
+    <div class="exp-mosaic">
+      <article class="exp-card exp-uc"><img src="assets/catalina-uc-presenting.png" alt="Catalina presentando sobre comunidad internacional en la UC"><div class="exp-overlay"><span>COOPERACIÓN INTERNACIONAL</span><h4>Universidades, redes y personas</h4><p>Mi trabajo en educación superior me ha llevado a conectar instituciones, acompañar comunidades internacionales y transformar oportunidades globales en proyectos concretos.</p></div></article>
+      <article class="exp-card"><img src="assets/catalina-cepal.png" alt="Catalina Cea en CEPAL Naciones Unidas"><div><span>INVESTIGACIÓN · CEPAL</span><h4>Entender antes de intervenir</h4><p>Trabajé investigando cohesión social en América Latina y el Caribe. Esa experiencia reforzó una forma de trabajar que sigo usando: comprender bien el problema antes de construir una respuesta.</p></div></article>
+      <article class="exp-card"><img src="assets/catalina-ifrc.png" alt="Catalina en el Proyecto de Movilidad Poblacional en Chile"><div><span>PROYECTOS HUMANITARIOS</span><h4>De la investigación al terreno</h4><p>También he trabajado en proyectos vinculados a movilidad poblacional y respuesta humanitaria, donde planificación, seguimiento y personas tienen que convivir en el mundo real.</p></div></article>
+      <article class="exp-card exp-speaking"><img src="assets/catalina-uc-podium.png" alt="Catalina Cea moderando un encuentro internacional"><div><span>COMUNICACIÓN & FACILITACIÓN</span><h4>Crear espacios donde las ideas se mueven</h4><p>Presentar, moderar, facilitar y trabajar con personas de distintos contextos también forma parte de mi trayectoria.</p></div></article>
+    </div>
+  </div>
 
-      <div class="card">
-        <h2>2. ¿Qué te dice esta foto de tu momento actual?</h2>
-        <p class="helper">Puedes escribir libremente aquí. ¿Qué patrones ves? ¿Qué te sorprende?</p>
-        <textarea data-save="step1_reflection" placeholder="Escribe aquí..."></textarea>
-      </div>
+  <div class="publications-v6">
+    <div class="pub-copy"><p class="eyebrow">PUBLICACIONES</p><h3>Investigación que también se convirtió en <em>publicaciones.</em></h3><p>Participé como coautora en trabajos regionales sobre cohesión social en América Latina y el Caribe.</p><span class="tiny-note">CEPAL · COHESIÓN SOCIAL · AMÉRICA LATINA Y EL CARIBE</span></div>
+    <div class="pub-books"><img class="pub-one" src="assets/cepal-publication-1.png" alt="Panorama de la cohesión social en América Latina y el Caribe"><img class="pub-two" src="assets/cepal-publication-2.png" alt="Metodología de medición de la cohesión social en América Latina y el Caribe"></div>
+  </div>
 
-      <div class="card">
-        <h2>3. Para terminar esta sección…</h2>
-        <p class="helper">Si durante los próximos 3 meses pudieras mejorar solo UNA de estas áreas, ¿cuál tendría mayor impacto en tu vida o carrera?</p>
-        <select data-save="step1_priority">
-          <option value="">Selecciona una opción</option>
-          <option>Vida personal</option>
-          <option>Carrera / trabajo</option>
-          <option>Formación y competencias</option>
-          <option>Crecimiento y aprendizaje</option>
-          <option>Claridad sobre lo que quiero</option>
-          <option>Energía para hacer cambios</option>
-          <option>Oportunidades para avanzar</option>
-          <option>Definir mi próximo paso</option>
-        </select>
+  <div class="global-v6">
+    <div class="global-photo"><img src="assets/catalina-ajman-award.png" alt="Catalina Cea recibiendo un reconocimiento del Global Council for Tolerance and Peace"><span class="global-stamp">MIRADA<br>GLOBAL</span></div>
+    <div class="global-copy"><p class="eyebrow peach">PAZ · LIDERAZGO · MUNDO</p><h3>Una mirada que cruzó <em>fronteras.</em></h3><p>He tenido la oportunidad de participar en espacios internacionales de diálogo, educación y cooperación. En Emiratos Árabes Unidos fui reconocida como <strong>Young Ambassador for Tolerance and Peace</strong> por el Global Council for Tolerance and Peace.</p><p>Más que sumar un reconocimiento, esas experiencias me enseñaron a mirar una decisión desde más de un contexto y a entender que no existe una sola manera correcta de construir una trayectoria.</p><div class="award-detail"><img src="assets/catalina-award-detail.png" alt="Reconocimiento y certificado del Global Council for Tolerance and Peace"><small>RECONOCIMIENTO · GLOBAL COUNCIL FOR TOLERANCE AND PEACE</small></div></div>
+  </div>
+
+  <div class="coaching-origin-v6">
+    <div class="origin-photo"><img src="assets/catalina-sunset.png" alt="Catalina Cea al atardecer"><span>¿POR QUÉ<br>COACHING?</span></div>
+    <div class="origin-copy"><p class="eyebrow">MI HISTORIA · MI PROPÓSITO</p><h3>Quiero Vivir Bien nació de una pregunta bastante simple:</h3><p class="origin-question">¿Cómo construimos una vida y una carrera que realmente se sientan nuestras?</p><p>Mi formación en coaching sumó metodología a todo lo que ya había aprendido trabajando con personas, proyectos y oportunidades. Hoy combino ambos mundos: coaching para ayudarte a descubrir tu camino y herramientas concretas para empezar a recorrerlo.</p><div class="origin-principles"><span>ESCUCHAR</span><span>EXPLORAR</span><span>DEFINIR</span><span>ACTUAR</span><span>REVISAR</span></div></div>
+  </div>
+
+  <div class="bring-v6">
+    <div class="bring-head"><p class="eyebrow">¿QUÉ TRAIGO YO?</p><h3>No llego solo<br>con <em>preguntas.</em></h3><p>Tú sigues siendo quien toma las decisiones. Cuando tu objetivo lo necesita, mi experiencia también entra a la sesión.</p></div>
+    <div class="bring-grid">
+      <article><span>01</span><b>Carrera & empleabilidad</b><p>CV · LinkedIn · entrevistas · inserción laboral · reinvención.</p></article>
+      <article><span>02</span><b>Internacional</b><p>Becas · universidades · estudios afuera · oportunidades globales.</p></article>
+      <article><span>03</span><b>Comunicación</b><p>Inglés profesional · entrevistas ES/EN · motivación · networking.</p></article>
+      <article><span>04</span><b>Futuro del trabajo</b><p>IA aplicada · herramientas digitales · upskilling · nuevas competencias.</p></article>
+      <article><span>05</span><b>Proyectos & academia</b><p>Investigación · publicaciones · fondos · formulación y postulaciones.</p></article>
+      <article class="bring-image"><img src="assets/catalina-workshop.png" alt="Catalina trabajando en un taller colaborativo"></article>
+    </div>
+  </div>
+
+  <div class="about-close-v6">
+    <span class="close-kicker">QVB · QUIERO VIVIR BIEN</span>
+    <h3>“No voy a darte un mapa.<br><em>Vamos a construir el tuyo.</em>”</h3>
+    <p>Catalina Cea · Life & Career Coach</p>
+    <div><a class="button" href="https://calendly.com/cacea-cepal/30min" target="_blank" rel="noopener">Agenda tu primer encuentro gratis →</a><a class="linkedin-link" href="https://www.linkedin.com/in/catalina-cea-marchini/" target="_blank" rel="noopener">LinkedIn ↗</a></div>
+  </div>
+</section>
+
+<section class="resources section" id="recursos">
+  <div class="section-label light">02 · RECURSOS</div>
+  <div class="resource-layout">
+    <div class="resource-title">
+      <p class="eyebrow peach">EMPIEZA GRATIS</p>
+      <h2>Primero,<br><em>ordena tus ideas.</em></h2>
+      <p>Recursos QVB para pensar, escribir, decidir y avanzar a tu ritmo.</p>
+    </div>
+    <div class="book-scene">
+      <div class="book back"><small>QVB WORKBOOK</small><strong>MI MAPA<br>DE CARRERA</strong></div>
+      <div class="book mid"><small>QVB TOOL</small><strong>MI<br>BRÚJULA</strong></div>
+      <div class="book front">
+        <span class="free-tag">GRATIS</span>
+        <small>QUIERO VIVIR BIEN</small>
+        <strong>¿Y AHORA<br>QUÉ?</strong>
+        <p>Una guía para descubrir tu próximo paso cuando sabes que quieres algo distinto.</p>
+        <span class="mini">CLARIDAD · VIDA · CARRERA</span>
       </div>
+    </div>
+    <div class="resource-action">
+      <p>5 pasos interactivos para mirar dónde estás, reconocer qué necesitas y definir tu próximo paso.</p>
+      <a class="button cream" href="/guia-ahora-que/">Empezar guía gratis →</a>
+    </div>
+  </div>
+</section>
+
+
+<section class="identify section" id="te-ves-aqui">
+  <div class="section-label">03 · ¿TE VES AQUÍ?</div>
+  <div class="identify-head">
+    <div>
+      <p class="eyebrow">A VECES NO FALTA CAPACIDAD. FALTA CLARIDAD.</p>
+      <h2>Quizás llegaste hasta aquí<br>porque <em>algo ya no te calza.</em></h2>
+    </div>
+    <p>No necesitas tener una gran crisis ni saber exactamente qué quieres. A veces basta con sentir que quieres moverte, pero todavía no sabes hacia dónde.</p>
+  </div>
+  <div class="identify-grid">
+    <article><span>01</span><p>Terminé de estudiar y no sé cómo conseguir <strong>mi primer trabajo.</strong></p></article>
+    <article><span>02</span><p>Tengo una buena pega, pero siento que <strong>ya no quiero seguir por este camino.</strong></p></article>
+    <article><span>03</span><p>Quiero cambiar de área y no sé <strong>si mi experiencia sirve para algo distinto.</strong></p></article>
+    <article><span>04</span><p>Tengo demasiadas opciones y me cuesta <strong>elegir una sin sentir que cierro las demás.</strong></p></article>
+    <article><span>05</span><p>Quiero postular a una beca, estudiar o crecer afuera, pero <strong>no sé por dónde empezar.</strong></p></article>
+    <article><span>06</span><p>Sé que quiero algo distinto. <strong>Solo que todavía no sé qué.</strong></p></article>
+  </div>
+  <div class="identify-close"><span>NO NECESITAS TENER TODO RESUELTO PARA EMPEZAR.</span><a href="#encuentra-tu-paso">Encuentra tu próximo paso ↓</a></div>
+</section>
+
+<section class="pathfinder section" id="encuentra-tu-paso">
+  <div class="section-label light">04 · ENCUENTRA TU PRÓXIMO PASO</div>
+  <div class="pathfinder-head">
+    <p class="eyebrow peach">NO TIENES QUE SABER QUÉ SERVICIO ELEGIR</p>
+    <h2>Dime dónde estás.<br><em>Partimos desde ahí.</em></h2>
+    <p>Elige la frase que más se parece a lo que estás viviendo hoy.</p>
+  </div>
+  <div class="route-board">
+    <a href="#claridad" class="route"><span class="route-icon">?</span><div><small>NO SÉ QUÉ QUIERO</small><strong>Necesito ordenar mis ideas.</strong><p>Una decisión, una duda o simplemente demasiadas cosas dando vueltas.</p></div><b>Sesión Claridad <i>→</i></b></a>
+    <a href="#trabajo" class="route"><span class="route-icon">01</span><div><small>BUSCO TRABAJO</small><strong>Quiero entrar o volver al mercado laboral.</strong><p>Primer trabajo, nueva oportunidad, CV, LinkedIn, búsqueda y entrevistas.</p></div><b>Mi Próximo Trabajo <i>→</i></b></a>
+    <a href="#reinventa" class="route"><span class="route-icon">↗</span><div><small>QUIERO CAMBIAR</small><strong>Mi carrera ya no se siente como antes.</strong><p>Explorar opciones, reconocer fortalezas y construir una transición posible.</p></div><b>Reinventa tu Carrera <i>→</i></b></a>
+    <a href="#internacional" class="route"><span class="route-icon">✦</span><div><small>QUIERO IR MÁS LEJOS</small><strong>Estoy mirando oportunidades internacionales.</strong><p>Becas, estudios, preparación de candidatura y próximos pasos.</p></div><b>Salto Internacional <i>→</i></b></a>
+    <a href="#capsulas" class="route"><span class="route-icon">+</span><div><small>NECESITO ALGO PUNTUAL</small><strong>Ya sé qué quiero mejorar.</strong><p>CV, LinkedIn, entrevista, postulación o candidatura a una beca.</p></div><b>Cápsulas QVB <i>→</i></b></a>
+  </div>
+  <div class="pathfinder-help"><span>¿NINGUNA TE CALZA PERFECTO?</span><p>No pasa nada. El primer encuentro existe justamente para eso.</p><a href="#agenda">Agenda gratis →</a></div>
+</section>
+
+<section class="sessions section" id="sesiones">
+  <div class="section-label">05 · SESIONES</div>
+  <div class="sessions-head">
+    <div><p class="eyebrow">ELIGE TU PRÓXIMO PASO</p><h2>No todos necesitamos<br>el mismo tipo de <em>apoyo.</em></h2></div>
+    <p>Empieza con una conversación, resuelve algo puntual o trabaja conmigo en un proceso.</p>
+  </div>
+
+  <div class="free-meet">
+    <div class="calendar">
+      <div class="cal-top"><span>SEPTIEMBRE</span><b>04</b></div>
+      <div class="cal-body"><small>PRIMER ENCUENTRO</small><strong>CATALINA + TÚ</strong><span>20–30 MIN · ONLINE</span></div>
+    </div>
+    <div class="free-copy">
+      <span class="stamp">GRATIS</span>
+      <h3>Conversemos antes<br>de que compres.</h3>
+      <p>Me cuentas dónde estás y vemos qué tipo de apoyo hace sentido para ti.</p>
+      <a href="#agenda" class="arrow-link">Reservar primer encuentro →</a>
+    </div>
+  </div>
+
+  <div class="service-list">
+    <article class="service" id="claridad">
+      <div class="service-num">01</div>
+      <div><small>SESIÓN PUNTUAL</small><h3>Sesión Claridad</h3><p>Una duda. Una decisión. Un próximo paso.</p><ul class="service-detail"><li>Ordenamos lo que estás viviendo</li><li>Exploramos perspectivas</li><li>Sales con próximos pasos concretos</li></ul></div>
+      <div class="chips"><span>60 MIN</span><span>ONLINE</span><span>1:1</span></div>
+      <div class="service-price"><strong>$9.990</strong><small>PRECIO LANZAMIENTO</small></div>
+      <a href="#agenda">→</a>
     </article>
-
-    <aside class="right-rail">
-      <div class="quote-side">“La claridad no siempre llega como una respuesta, sino como una mejor pregunta.”<span>— QVB</span></div>
-      <div class="tip-card"><strong>TIP QVB</strong><p>No busques la perfección en tus respuestas. Busca honestidad. Eso ya es un gran paso.</p></div>
-      <div class="visual-card">Estás aquí.<br>Y eso también<br>es parte del camino.</div>
-    </aside>
-  </template>
-
-  <template id="step2">
-    <article class="panel main-panel">
-      <div class="headline-row">
-        <span class="step-badge">02</span>
-        <div>
-          <h1>Qué quiero (más y menos).</h1>
-          <p class="lead">A veces no sabemos exactamente qué necesitamos hasta que vemos las opciones delante.</p>
-        </div>
-      </div>
-
-      <div class="split">
-        <div class="card">
-          <h2>Quiero MÁS…</h2>
-          <p class="helper">Marca todo lo que te gustaría que estuviera más presente en tu próxima etapa.</p>
-          <div id="moreOptions" class="check-grid"></div>
-        </div>
-        <div class="card blush">
-          <h2>Quiero MENOS…</h2>
-          <p class="helper">Marca lo que ya no quieres seguir sosteniendo igual.</p>
-          <div id="lessOptions" class="check-grid"></div>
-        </div>
-      </div>
-
-      <div class="card">
-        <h2>¿Qué te sorprende de lo que marcaste?</h2>
-        <textarea data-save="step2_reflection" placeholder="¿Hay algo que no habías puesto en palabras?"></textarea>
-      </div>
+    <article class="service" id="trabajo">
+      <div class="service-num">02</div>
+      <div><small>3 SESIONES</small><h3>Mi Próximo Trabajo</h3><p>Dirección · perfil · búsqueda · postulación · entrevista.</p><ul class="service-detail"><li>Define qué oportunidades buscar</li><li>Trabaja CV, LinkedIn y estrategia</li><li>Prepárate para postular y entrevistar</li></ul></div>
+      <div class="chips"><span>PRIMER TRABAJO</span><span>CAMBIO</span></div>
+      <div class="service-price"><strong>$12.990</strong><small>PROCESO COMPLETO</small></div>
+      <a href="#agenda">→</a>
     </article>
-
-    <aside class="right-rail">
-      <div class="quote-side">“Abrir posibilidades también es avanzar.”<span>— QVB</span></div>
-      <div class="tip-card"><strong>TIP QVB</strong><p>No necesitas elegir una sola cosa todavía. Primero observa qué se repite.</p></div>
-    </aside>
-  </template>
-
-  <template id="step3">
-    <article class="panel main-panel">
-      <div class="headline-row">
-        <span class="step-badge">03</span>
-        <div>
-          <h1>Ahora mira lo que marcaste.</h1>
-          <p class="lead">¿Dónde parece estar hoy tu principal necesidad? Marca hasta 2.</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <div id="needOptions" class="need-list"></div>
-      </div>
-
-      <div class="card soft">
-        <h2>Si durante los próximos 3 meses pudieras mejorar solo UNA de esas áreas, ¿cuál haría que tu vida o carrera se sintiera más tuya?</h2>
-        <textarea data-save="step3_focus" placeholder="Escribe tu respuesta..."></textarea>
-      </div>
+    <article class="service" id="reinventa">
+      <div class="service-num">03</div>
+      <div><small>4 SESIONES</small><h3>Reinventa tu Carrera</h3><p>Fortalezas · opciones · skills · formación · IA · plan.</p><ul class="service-detail"><li>Mapea lo que ya tienes</li><li>Explora caminos y brechas</li><li>Construye un plan de reinvención</li></ul></div>
+      <div class="chips"><span>EXPLORAR</span><span>REINVENTAR</span></div>
+      <div class="service-price"><strong>$19.990</strong><small>PROCESO COMPLETO</small></div>
+      <a href="#agenda">→</a>
     </article>
-
-    <aside class="right-rail">
-      <div class="quote-side">“No todo cambio empieza con una decisión. A veces empieza con una dirección.”<span>— QVB</span></div>
-    </aside>
-  </template>
-
-  <template id="step4">
-    <article class="panel main-panel">
-      <div class="headline-row">
-        <span class="step-badge">04</span>
-        <div>
-          <h1>Tu brújula.</h1>
-          <p class="lead">Elige 5 palabras que quieras que estén presentes en tu próxima etapa.</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <div id="valuesOptions" class="pill-grid"></div>
-        <p id="valuesCounter" class="counter">0 de 5 seleccionadas</p>
-      </div>
-
-      <div class="card">
-        <h2>Tres preguntas para conectar con lo que realmente importa:</h2>
-        <label class="prompt">1. ¿Qué de tu vida actual sí quieres llevar contigo a tu próxima etapa?
-          <textarea data-save="step4_q1"></textarea>
-        </label>
-        <label class="prompt">2. ¿Qué estás manteniendo porque realmente lo quieres y qué mantienes porque sientes que “deberías”?
-          <textarea data-save="step4_q2"></textarea>
-        </label>
-        <label class="prompt">3. Si nadie opinara sobre tu decisión, ¿qué posibilidad te darías permiso de explorar?
-          <textarea data-save="step4_q3"></textarea>
-        </label>
-      </div>
+    <article class="service" id="internacional">
+      <div class="service-num">04</div>
+      <div><small>3 SESIONES</small><h3>Da el Salto Internacional</h3><p>Explorar · elegir · preparar · postular.</p><ul class="service-detail"><li>Explora becas, estudios y oportunidades</li><li>Revisa requisitos y fortalece tu perfil</li><li>Prepara una estrategia de candidatura</li></ul></div>
+      <div class="chips"><span>BECAS</span><span>ESTUDIOS</span><span>MUNDO</span></div>
+      <div class="service-price"><strong>$29.990</strong><small>PROCESO COMPLETO</small></div>
+      <a href="#agenda">→</a>
     </article>
+  </div>
 
-    <aside class="right-rail">
-      <div class="quote-side">“Tu próximo paso no tiene que impresionar a nadie. Tiene que tener sentido para ti.”<span>— QVB</span></div>
-    </aside>
-  </template>
+  <div class="express" id="capsulas">
+    <div class="express-title"><span>CÁPSULAS QVB</span><h3>Pick what<br>you need.</h3><p>Apoyo puntual. Próximo paso concreto.</p></div>
+    <div class="menu">
+      <div><span><b>01</b> <i>CV RESET</i><small>Revisión estratégica para que tu experiencia comunique mejor tu valor.</small></span><strong>$5.990</strong></div>
+      <div><span><b>02</b> <i>LINKEDIN RESET</i><small>Optimización de perfil y posicionamiento profesional.</small></span><strong>$5.990</strong></div>
+      <div><span><b>03</b> <i>ENTREVISTA READY</i><small>Preparación + simulación + feedback · ES / EN.</small></span><strong>$9.990</strong></div>
+      <div><span><b>04</b> <i>POSTULACIÓN READY</i><small>Revisión/optimización de CV + carta de motivación + estrategia para una postulación concreta.</small></span><strong>$14.990</strong></div>
+      <div><span><b>05</b> <i>BECA READY</i><small>Revisión de requisitos + estrategia + preparación de candidatura.</small></span><strong>$19.990</strong></div>
+    </div>
+  </div>
+</section>
 
-  <template id="step5">
-    <article class="panel main-panel">
-      <div class="headline-row">
-        <span class="step-badge">05</span>
+<section class="faq section" id="faq">
+  <div class="section-label">06 · FAQ</div>
+  <div class="faq-grid">
+    <div class="faq-intro"><p class="eyebrow">ANTES DE EMPEZAR</p><h2>Preguntas<br>que quizá tú<br><em>también tienes.</em></h2><p>No necesitas llegar sabiendo exactamente qué necesitas.</p></div>
+    <div class="messages">
+      <details><summary>¿Coaching es terapia?<span>+</span></summary><p>No. Son procesos diferentes. El coaching trabaja con objetivos, decisiones y desarrollo y no reemplaza evaluación o tratamiento de salud mental.</p></details>
+      <details><summary>¿Necesito saber qué quiero?<span>+</span></summary><p>No. Podemos empezar justamente por ordenar dónde estás y explorar posibilidades.</p></details>
+      <details><summary>¿Puedo tomar solo una sesión?<span>+</span></summary><p>Sí. Puedes elegir una Sesión Claridad, una cápsula o un proceso según tu necesidad.</p></details>
+      <details><summary>¿Las sesiones son online?<span>+</span></summary><p>Sí, el formato es online y 1:1.</p></details>
+      <details><summary>¿Trabajas con recién egresados?<span>+</span></summary><p>Sí. También acompaño primeros pasos laborales, búsqueda de oportunidades y preparación de postulaciones.</p></details>
+      <details><summary>¿Podemos preparar una entrevista en inglés?<span>+</span></summary><p>Sí. Entrevista Ready puede trabajarse en español o inglés.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="booking section" id="agenda">
+  <div class="section-label light">07 · AGENDA AQUÍ</div>
+  <div class="booking-shell">
+    <div class="booking-copy">
+      <p class="eyebrow peach">PRIMER ENCUENTRO GRATIS</p>
+      <h2>Agenda tu primer<br>encuentro <em>sin costo.</em></h2>
+      <p class="booking-lead">Una conversación breve para contarme dónde estás, qué te gustaría trabajar y ver juntas cuál podría ser la mejor forma de empezar.</p>
+      <div class="booking-points">
+        <span>20–30 MIN</span><span>ONLINE</span><span>1:1</span><span>SIN COMPROMISO</span>
+      </div>
+      <p class="booking-small">La primera conversación es gratis. Si después quieres continuar, eliges la sesión o proceso que haga sentido para ti.</p>
+    </div>
+
+    <div class="calendar-card">
+      <div class="calendar-head">
+        <div class="calendar-brand">
+          <div class="teams-dot"></div>
+          <div>
+            <span>QVB CALENDAR</span>
+            <small>Disponibilidad semanal</small>
+          </div>
+        </div>
+        <span class="online-pill">● ONLINE</span>
+      </div>
+
+      <div class="week-grid">
+        <div class="day-card active">
+          <span class="day">LUN</span>
+          <strong>19:00</strong>
+          <small>21:00</small>
+        </div>
+        <div class="day-card active">
+          <span class="day">MAR</span>
+          <strong>19:00</strong>
+          <small>21:00</small>
+        </div>
+        <div class="day-card active">
+          <span class="day">MIÉ</span>
+          <strong>19:00</strong>
+          <small>21:00</small>
+        </div>
+        <div class="day-card active">
+          <span class="day">JUE</span>
+          <strong>19:00</strong>
+          <small>21:00</small>
+        </div>
+        <div class="day-card friday">
+          <span class="day">VIE</span>
+          <strong>18:00</strong>
+          <small>20:00</small>
+        </div>
+        <div class="day-card saturday">
+          <span class="day">SÁB</span>
+          <strong>09:00</strong>
+          <small>17:00</small>
+        </div>
+      </div>
+
+      <div class="calendar-event">
+        <div class="event-time">
+          <span>30</span>
+          <small>MIN</small>
+        </div>
+        <div class="event-copy">
+          <small>PRIMER ENCUENTRO QVB</small>
+          <strong>Catalina + Tú</strong>
+          <p>Cuéntame dónde estás. Vemos juntas cuál podría ser tu mejor próximo paso.</p>
+        </div>
+        <span class="free-badge">GRATIS</span>
+      </div>
+
+      <div class="calendar-footer">
         <div>
-          <h1>¿Y ahora qué?</h1>
-          <p class="lead">No necesitas un plan para los próximos 10 años. Necesitas un próximo paso.</p>
+          <small>HORARIO DE ATENCIÓN</small>
+          <p>Lun–Jue 19:00–21:00 · Vie 18:00–20:00 · Sáb 09:00–17:00</p>
         </div>
+        <a class="button cream book-now" href="https://calendly.com/cacea-cepal/30min" target="_blank" rel="noopener">Ver horarios disponibles →</a>
       </div>
+    </div>
+  </div>
+  <div class="contact-alt" id="contacto">
+    <div><small>¿NO SABES QUÉ RESERVAR?</small><h3>También puedes escribirme.</h3><p>Cuéntame brevemente qué estás buscando y te oriento sobre cuál podría ser el mejor punto de partida.</p></div>
+    <a class="whatsapp-button" href="https://wa.me/56962261085?text=Hola%20Catalina%2C%20llegu%C3%A9%20desde%20Quiero%20Vivir%20Bien%20y%20quer%C3%ADa%20contarte%20lo%20que%20estoy%20buscando." target="_blank" rel="noopener"><span>WHATSAPP</span><strong>+56 9 6226 1085</strong><b>Escribirme →</b></a>
+  </div>
+</section>
+</main>
 
-      <div class="card highlight">
-        <h2>LA PREGUNTA QVB</h2>
-        <p>Si no tuvieras que tener todo resuelto, ¿cuál sería el siguiente paso que sí podrías dar?</p>
-        <textarea data-save="step5_next" placeholder="Mi próximo paso podría ser..."></textarea>
-      </div>
-
-      <div class="split">
-        <div class="card">
-          <h2>Durante los próximos 7 días voy a:</h2>
-          <div id="actionOptions" class="check-grid"></div>
-        </div>
-        <div class="card">
-          <h2>Lo haré antes del:</h2>
-          <input type="date" data-save="step5_date" />
-          <div class="mini-note">Un paso a la vez también es progreso.</div>
-        </div>
-      </div>
-
-      <div class="card result-card">
-        <h2>Tu mini resumen QVB</h2>
-        <p id="summaryText">Cuando completes la guía, aquí verás tus principales elecciones.</p>
-        <button id="copySummaryBtn" class="ghost-btn">Copiar resumen</button>
-      </div>
-
-      <div class="cta-card">
-        <div>
-          <span>¿Quieres conversar sobre tu próximo paso?</span>
-          <strong>PRIMER ENCUENTRO · 30 MIN · ONLINE · GRATIS</strong>
-        </div>
-        <a class="primary-btn" target="_blank" rel="noopener" href="https://calendly.com/cacea-cepal/30min">AGENDA TU ENCUENTRO →</a>
-      </div>
-    </article>
-
-    <aside class="right-rail">
-      <div class="quote-side">“Quizás todavía no sabes exactamente dónde vas. Está bien. A veces claridad significa saber cuál es el siguiente paso que quieres probar.”<span>— QVB</span></div>
-    </aside>
-  </template>
-
-  <script src="./script.js"></script>
+<footer>
+  <div class="footer-logo"><span>QVB</span><small>QUIERO VIVIR BIEN</small></div>
+  <p>UNA VIDA Y UNA CARRERA QUE SE SIENTAN TUYAS.</p>
+  <div><a href="#sobre-mi">Sobre mí</a><a href="#recursos">Recursos</a><a href="#sesiones">Sesiones</a><a href="#faq">FAQ</a><a href="#agenda">Agenda aquí</a><a href="#contacto">Contacto</a><a href="https://www.linkedin.com/in/catalina-cea-marchini/" target="_blank" rel="noopener">LinkedIn ↗</a></div>
+</footer>
+<script src="script.js"></script>
 </body>
 </html>

@@ -1,31 +1,11 @@
-# QVB · Guía interactiva “¿Y ahora qué?”
+# QUIERO VIVIR BIEN · V8
 
-Carpeta lista para subir al repositorio de GitHub.
+Paquete completo: web principal V7 restaurada + guía interactiva “¿Y ahora qué?” correctamente separada.
 
-## Cómo usarla
-1. Copia la carpeta `guia-ahora-que` a la raíz de tu repo `QUIERO-VIVIR-BIEN`.
-2. Haz commit en GitHub.
-3. Vercel debería desplegar automáticamente.
-4. La guía quedará disponible en:
-   `https://quierovivirbien.vercel.app/guia-ahora-que/`
+## Estructura
+- `/index.html`, `/styles.css`, `/script.js`: web principal.
+- `/assets/`: imágenes de la web principal.
+- `/guia-ahora-que/`: guía interactiva independiente.
+- `/guia-ahora-que/assets/`: fotos personales usadas solo en la guía.
 
-## Qué hace
-- 5 pasos interactivos.
-- Escalas 1–5.
-- Selección múltiple “Quiero más / Quiero menos”.
-- Máximo 2 necesidades principales.
-- Máximo 5 valores.
-- Textos abiertos.
-- Próximo paso y fecha.
-- Guardado automático en `localStorage`.
-- Botón “Guardar y continuar más tarde”.
-- Resumen final.
-- CTA a Calendly.
-- WhatsApp de contacto.
-
-## Importante
-Esta versión guarda respuestas en el navegador del usuario. No envía respuestas ni correos a un servidor.
-Para capturar email y enviar “Notas QVB” necesitaremos conectar un servicio de email/CRM o una base de datos.
-
-## Fotos personales
-Esta versión usa las fotos originales de Catalina guardadas localmente en `guia-ahora-que/assets/`; no depende de imágenes externas ni altera las fotografías.
+La tarjeta “¿Y ahora qué?” del home enlaza a `/guia-ahora-que/`.
