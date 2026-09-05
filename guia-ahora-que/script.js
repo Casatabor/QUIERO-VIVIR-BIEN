@@ -1,4 +1,3 @@
-
 const steps = [
   {id:1,label:"Mira dónde estás"},
   {id:2,label:"Qué quiero (más y menos)"},
@@ -56,10 +55,83 @@ const actions = [
 
 let currentStep = Number(localStorage.getItem("qvb_current_step") || 1);
 let state = JSON.parse(localStorage.getItem("qvb_guide_state") || "{}");
+let lead = JSON.parse(localStorage.getItem("qvb_lead") || "null");
 
 function persist(){
   localStorage.setItem("qvb_guide_state", JSON.stringify(state));
   localStorage.setItem("qvb_current_step", String(currentStep));
+}
+
+function persistLead(){
+  localStorage.setItem("qvb_lead", JSON.stringify(lead));
+}
+
+function showGuide(){
+  document.getElementById("leadGate").classList.add("is-hidden");
+  document.getElementById("guideApp").classList.remove("is-hidden");
+  const hello = document.getElementById("helloUser");
+  if(hello && lead?.name) hello.textContent = `Hola, ${lead.name}`;
+  render();
+}
+
+function showGate(){
+  document.getElementById("leadGate").classList.remove("is-hidden");
+  document.getElementById("guideApp").classList.add("is-hidden");
+}
+
+async function syncLead({completed=false}={}){
+  if(!lead?.email || !lead?.name) throw new Error("Faltan datos de contacto.");
+  const response = await fetch("/api/brevo-contact", {
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({
+      name: lead.name,
+      email: lead.email,
+      notesQvb: Boolean(lead.notesQvb),
+      guideCompleted: Boolean(completed),
+      website: ""
+    })
+  });
+  const data = await response.json().catch(()=>({}));
+  if(!response.ok) throw new Error(data.error || "No pudimos registrar tus datos.");
+  return data;
+}
+
+async function handleLeadSubmit(event){
+  event.preventDefault();
+  const btn=document.getElementById("startGuideBtn");
+  const status=document.getElementById("leadFormStatus");
+  const name=document.getElementById("leadName").value.trim();
+  const email=document.getElementById("leadEmail").value.trim().toLowerCase();
+  const notesQvb=document.getElementById("notesConsent").checked;
+  const website=document.getElementById("websiteField").value.trim();
+
+  if(website) return;
+  if(!name || !email){
+    status.textContent="Completa tu nombre y email.";
+    status.className="form-status error";
+    return;
+  }
+
+  btn.disabled=true;
+  btn.textContent="GUARDANDO…";
+  status.textContent="";
+  status.className="form-status";
+
+  lead={name,email,notesQvb};
+  persistLead();
+
+  try{
+    await syncLead({completed:false});
+    status.textContent="Listo. Tu acceso quedó registrado.";
+    status.className="form-status success";
+    setTimeout(showGuide,250);
+  }catch(err){
+    status.textContent=err.message || "No pudimos conectar con QVB. Intenta nuevamente.";
+    status.className="form-status error";
+    btn.disabled=false;
+    btn.textContent="EMPEZAR MI GUÍA →";
+  }
 }
 
 function buildNav(){
@@ -99,7 +171,24 @@ function render(){
   bindSaveInputs();
 
   document.getElementById("prevBtn")?.addEventListener("click",()=>{saveVisible();currentStep=Math.max(1,currentStep-1);persist();render();});
-  document.getElementById("nextBtn")?.addEventListener("click",()=>{saveVisible();if(currentStep<5){currentStep++;persist();render();}else{updateSummary();}});
+  document.getElementById("nextBtn")?.addEventListener("click",async()=>{
+    saveVisible();
+    if(currentStep<5){currentStep++;persist();render();return;}
+    updateSummary();
+    const btn=document.getElementById("nextBtn");
+    const status=document.getElementById("completionStatus");
+    btn.disabled=true;
+    btn.textContent="GUARDANDO…";
+    try{
+      await syncLead({completed:true});
+      if(status) status.textContent="✓ Guía completada y registrada en QVB";
+      btn.textContent="✓ FINALIZADA";
+    }catch{
+      if(status) status.textContent="Tu guía quedó guardada en este dispositivo. El registro online no pudo actualizarse.";
+      btn.disabled=false;
+      btn.textContent="Finalizar";
+    }
+  });
   document.getElementById("copySummaryBtn")?.addEventListener("click",copySummary);
 }
 
@@ -159,7 +248,7 @@ function hydrateInputs(){
   });
 }
 
-function saveVisible(){bindSaveInputs();persist();}
+function saveVisible(){persist();}
 
 function updateSummary(){
   const el=document.getElementById("summaryText");
@@ -175,5 +264,11 @@ async function copySummary(){
   try{await navigator.clipboard.writeText(txt);alert("Resumen copiado.");}catch{alert(txt);}
 }
 
+document.getElementById("leadForm").addEventListener("submit",handleLeadSubmit);
 document.getElementById("saveBtn").addEventListener("click",()=>{persist();alert("Listo. Tu progreso quedó guardado en este dispositivo.");});
-render();
+
+if(lead?.name && lead?.email){
+  showGuide();
+}else{
+  showGate();
+}

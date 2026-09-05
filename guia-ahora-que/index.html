@@ -8,7 +8,34 @@
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
-  <div class="app-shell">
+  <div id="leadGate" class="lead-gate" aria-labelledby="gateTitle">
+    <div class="lead-gate-card">
+      <div class="gate-brand">QVB · QUIERO VIVIR BIEN</div>
+      <div class="gate-kicker">GUÍA INTERACTIVA GRATIS</div>
+      <h1 id="gateTitle">¿Y ahora qué?</h1>
+      <p class="gate-lead">5 pasos para mirar dónde estás, reconocer qué necesitas y definir tu próximo paso.</p>
+
+      <form id="leadForm" class="lead-form">
+        <label>Tu nombre
+          <input id="leadName" name="name" type="text" autocomplete="given-name" maxlength="80" required placeholder="Ej. Catalina" />
+        </label>
+        <label>Tu email
+          <input id="leadEmail" name="email" type="email" autocomplete="email" maxlength="160" required placeholder="tu@email.com" />
+        </label>
+        <label class="consent-row">
+          <input id="notesConsent" type="checkbox" />
+          <span>Quiero recibir <strong>Notas QVB</strong>: pequeñas preguntas, ideas y herramientas para mi vida y carrera. Podré darme de baja cuando quiera.</span>
+        </label>
+        <input id="websiteField" name="website" class="hp-field" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <button id="startGuideBtn" class="primary-btn gate-button" type="submit">EMPEZAR MI GUÍA →</button>
+        <p id="leadFormStatus" class="form-status" role="status" aria-live="polite"></p>
+      </form>
+
+      <p class="gate-privacy">Al comenzar, QVB guardará tu nombre y email para registrar el acceso a esta guía. Tus reflexiones y respuestas permanecen en este dispositivo; no se comparten con Catalina automáticamente.</p>
+    </div>
+  </div>
+
+  <div id="guideApp" class="app-shell is-hidden">
     <aside class="sidebar">
       <div class="brand">
         <div class="brand-mark">QVB</div>
@@ -38,7 +65,7 @@
           <span>Tu progreso: <strong id="progressLabel">20%</strong></span>
           <div class="progress"><div id="progressBar" class="progress-bar"></div></div>
         </div>
-        <button id="saveBtn" class="ghost-btn">♡ Guardar y continuar más tarde</button>
+        <div class="top-actions"><span id="helloUser" class="hello-user"></span><button id="saveBtn" class="ghost-btn">♡ Guardar y continuar más tarde</button></div>
       </header>
 
       <section id="stepContainer" class="content-grid">
@@ -218,7 +245,7 @@
       <div class="card result-card">
         <h2>Tu mini resumen QVB</h2>
         <p id="summaryText">Cuando completes la guía, aquí verás tus principales elecciones.</p>
-        <button id="copySummaryBtn" class="ghost-btn">Copiar resumen</button>
+        <div class="result-actions"><button id="copySummaryBtn" class="ghost-btn">Copiar resumen</button><span id="completionStatus" class="completion-status"></span></div>
       </div>
 
       <div class="cta-card">

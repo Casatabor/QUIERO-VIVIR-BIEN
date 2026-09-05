@@ -1,4 +1,13 @@
 
+
+.is-hidden{display:none!important}
+.lead-gate{min-height:100vh;display:grid;place-items:center;padding:28px;background:linear-gradient(135deg,#f7f2e8 0%,#edf1e9 54%,#f5e5e1 100%)}
+.lead-gate-card{width:min(620px,100%);background:rgba(255,253,249,.96);border:1px solid #e3ddd3;border-radius:22px;padding:42px;box-shadow:0 24px 70px rgba(37,40,36,.12)}
+.gate-brand{font-size:12px;letter-spacing:2.4px;color:var(--ink);font-weight:700}.gate-kicker{margin-top:26px;font-size:11px;letter-spacing:2px;color:#757a75}
+.lead-gate-card h1{font-size:56px;margin:8px 0 12px}.gate-lead{font-family:Georgia,serif;font-size:20px;line-height:1.5;margin:0 0 28px;color:#4b554f}
+.lead-form{display:grid;gap:16px}.lead-form>label:not(.consent-row){display:grid;gap:7px;font-size:13px;font-weight:700;color:#424b46}.lead-form input[type=text],.lead-form input[type=email]{width:100%;padding:14px 15px;border:1px solid #cfd1cb;border-radius:9px;background:#fff;outline:none}.lead-form input:focus{border-color:var(--ink);box-shadow:0 0 0 3px rgba(21,59,52,.08)}
+.consent-row{display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:1.45;color:#565d59}.consent-row input{margin-top:3px;accent-color:var(--ink)}.gate-button{width:100%;padding:14px 18px;margin-top:4px}.gate-button:disabled{opacity:.6;cursor:not-allowed}.form-status{min-height:20px;margin:0;font-size:13px}.form-status.error{color:#8b2e2e}.form-status.success{color:var(--ink)}
+.gate-privacy{margin:18px 0 0;font-size:11px;line-height:1.5;color:#777d79}.hp-field{position:absolute!important;left:-9999px!important;opacity:0!important;pointer-events:none!important}.top-actions{display:flex;align-items:center;gap:12px}.hello-user{font-family:Georgia,serif;font-size:13px;color:#59625d;white-space:nowrap}.result-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.completion-status{font-size:12px;color:var(--ink)}
 :root{
   --ink:#153b34; --text:#2e332f; --muted:#6b706c; --cream:#f5f1e9; --paper:#fffdf9;
   --sage:#dce3d7; --sage2:#edf1e9; --blush:#f4e2df; --line:#ddd9d2; --shadow:0 12px 36px rgba(37,40,36,.08);
