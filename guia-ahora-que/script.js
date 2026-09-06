@@ -111,6 +111,42 @@ async function syncLead({completed=false, shareSummary=false}={}){
   return data;
 }
 
+
+async function syncSummaryToBrevo(){
+  if(!lead?.email || !lead?.name) throw new Error("Faltan datos de contacto.");
+
+  const shareSummary = Boolean(document.getElementById("shareSummaryConsent")?.checked);
+
+  const payload = {
+    name: lead.name,
+    email: lead.email,
+    guideCompleted: true,
+    shareSummary,
+    summary: shareSummary ? {
+      needs: Array.isArray(state.needs) ? state.needs : [],
+      more: Array.isArray(state.more) ? state.more : [],
+      less: Array.isArray(state.less) ? state.less : [],
+      values: Array.isArray(state.values) ? state.values : [],
+      priorityArea: state.step1_priority || "",
+      nextStep: state.step5_next || "",
+      actions: Array.isArray(state.actions) ? state.actions : [],
+      targetDate: state.step5_date || ""
+    } : null
+  };
+
+  const response = await fetch("/api/brevo-summary", {
+    method: "POST",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify(payload)
+  });
+
+  const data = await response.json().catch(()=>({}));
+  if(!response.ok) {
+    throw new Error(data.error || "No pudimos guardar tu resumen.");
+  }
+  return { ...data, shareSummary };
+}
+
 async function handleLeadSubmit(event){
   event.preventDefault();
   const btn=document.getElementById("startGuideBtn");
@@ -194,13 +230,13 @@ function render(){
     btn.disabled=true;
     btn.textContent="GUARDANDO…";
     try{
-      const shareSummary = Boolean(document.getElementById("shareSummaryConsent")?.checked);
-      await syncLead({completed:true, shareSummary});
-      if(status) status.textContent = shareSummary
+      const result = await syncSummaryToBrevo();
+      if(status) status.textContent = result.shareSummary
         ? "✓ Guía completada y resumen compartido con QVB"
         : "✓ Guía completada. Tus respuestas permanecen privadas.";
       btn.textContent="✓ FINALIZADA";
-    }catch{
+    }catch(err){
+      console.error("QVB summary sync error:", err);
       if(status) status.textContent="Tu guía quedó guardada en este dispositivo. El registro online no pudo actualizarse.";
       btn.disabled=false;
       btn.textContent="Finalizar";
