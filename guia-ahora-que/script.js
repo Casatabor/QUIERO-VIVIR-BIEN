@@ -115,7 +115,13 @@ async function syncLead({completed=false, shareSummary=false}={}){
 async function syncSummaryToBrevo(){
   if(!lead?.email || !lead?.name) throw new Error("Faltan datos de contacto.");
 
-  const shareSummary = Boolean(document.getElementById("shareSummaryConsent")?.checked);
+  // Robust: use the persisted consent value. Fall back to the live checkbox.
+  const liveConsent = document.getElementById("shareSummaryConsent")?.checked;
+  const shareSummary = Boolean(
+    typeof state.shareSummaryConsent === "boolean"
+      ? state.shareSummaryConsent
+      : liveConsent
+  );
 
   const payload = {
     name: lead.name,
@@ -220,6 +226,17 @@ function render(){
   hydrateInputs();
   bindSaveInputs();
 
+  if(currentStep===5){
+    const shareBox = document.getElementById("shareSummaryConsent");
+    if(shareBox){
+      shareBox.checked = Boolean(state.shareSummaryConsent);
+      shareBox.addEventListener("change", (e)=>{
+        state.shareSummaryConsent = Boolean(e.target.checked);
+        persist();
+      });
+    }
+  }
+
   document.getElementById("prevBtn")?.addEventListener("click",()=>{saveVisible();currentStep=Math.max(1,currentStep-1);persist();render();});
   document.getElementById("nextBtn")?.addEventListener("click",async()=>{
     saveVisible();
@@ -231,7 +248,8 @@ function render(){
     btn.textContent="GUARDANDO…";
     try{
       const result = await syncSummaryToBrevo();
-      if(status) status.textContent = result.shareSummary
+      const shared = result.shared === true || result.shareSummary === true;
+      if(status) status.textContent = shared
         ? "✓ Guía completada y resumen compartido con QVB"
         : "✓ Guía completada. Tus respuestas permanecen privadas.";
       btn.textContent="✓ FINALIZADA";
