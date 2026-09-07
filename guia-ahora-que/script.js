@@ -79,20 +79,8 @@ function showGate(){
   document.getElementById("guideApp").classList.add("is-hidden");
 }
 
-async function syncLead({completed=false, shareSummary=false}={}){
+async function syncLead({completed=false}={}){
   if(!lead?.email || !lead?.name) throw new Error("Faltan datos de contacto.");
-
-  const structuredSummary = shareSummary ? {
-    needs: state.needs || [],
-    more: state.more || [],
-    less: state.less || [],
-    values: state.values || [],
-    priorityArea: state.step1_priority || "",
-    nextStep: state.step5_next || "",
-    actions: state.actions || [],
-    targetDate: state.step5_date || ""
-  } : null;
-
   const response = await fetch("/api/brevo-contact", {
     method:"POST",
     headers:{"Content-Type":"application/json"},
@@ -101,8 +89,6 @@ async function syncLead({completed=false, shareSummary=false}={}){
       email: lead.email,
       notesQvb: Boolean(lead.notesQvb),
       guideCompleted: Boolean(completed),
-      shareSummary: Boolean(shareSummary),
-      summary: structuredSummary,
       website: ""
     })
   });
@@ -112,23 +98,13 @@ async function syncLead({completed=false, shareSummary=false}={}){
 }
 
 
-async function syncSummaryToBrevo(){
+async function sendStructuredSummary(){
   if(!lead?.email || !lead?.name) throw new Error("Faltan datos de contacto.");
-
-  // Robust: use the persisted consent value. Fall back to the live checkbox.
-  const liveConsent = document.getElementById("shareSummaryConsent")?.checked;
-  const shareSummary = Boolean(
-    typeof state.shareSummaryConsent === "boolean"
-      ? state.shareSummaryConsent
-      : liveConsent
-  );
 
   const payload = {
     name: lead.name,
     email: lead.email,
-    guideCompleted: true,
-    shareSummary,
-    summary: shareSummary ? {
+    summary: {
       needs: Array.isArray(state.needs) ? state.needs : [],
       more: Array.isArray(state.more) ? state.more : [],
       less: Array.isArray(state.less) ? state.less : [],
@@ -137,20 +113,62 @@ async function syncSummaryToBrevo(){
       nextStep: state.step5_next || "",
       actions: Array.isArray(state.actions) ? state.actions : [],
       targetDate: state.step5_date || ""
-    } : null
+    }
   };
 
   const response = await fetch("/api/brevo-summary", {
-    method: "POST",
-    headers: {"Content-Type":"application/json"},
-    body: JSON.stringify(payload)
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify(payload)
   });
 
   const data = await response.json().catch(()=>({}));
-  if(!response.ok) {
-    throw new Error(data.error || "No pudimos guardar tu resumen.");
-  }
-  return { ...data, shareSummary };
+  if(!response.ok) throw new Error(data.error || "No pudimos compartir tu resumen.");
+  return data;
+}
+
+function bindShareSummary(){
+  const consent = document.getElementById("shareSummaryConsent");
+  const button = document.getElementById("shareSummaryBtn");
+  const status = document.getElementById("shareSummaryStatus");
+  if(!consent || !button) return;
+
+  button.disabled = !consent.checked;
+
+  consent.addEventListener("change", ()=>{
+    button.disabled = !consent.checked;
+    if(status){
+      status.textContent = "";
+      status.className = "form-status";
+    }
+  });
+
+  button.addEventListener("click", async ()=>{
+    if(!consent.checked) return;
+    button.disabled = true;
+    button.textContent = "COMPARTIENDO…";
+    if(status){
+      status.textContent = "";
+      status.className = "form-status";
+    }
+
+    try{
+      const result = await sendStructuredSummary();
+      if(status){
+        status.textContent = "✓ Tu resumen fue compartido con Catalina.";
+        status.className = "form-status success";
+      }
+      button.textContent = "✓ RESUMEN COMPARTIDO";
+      consent.disabled = true;
+    }catch(err){
+      if(status){
+        status.textContent = err.message || "No pudimos compartir tu resumen.";
+        status.className = "form-status error";
+      }
+      button.disabled = false;
+      button.textContent = "COMPARTIR MI RESUMEN →";
+    }
+  });
 }
 
 async function handleLeadSubmit(event){
@@ -221,21 +239,10 @@ function render(){
   if(currentStep===2){renderChecks("moreOptions",moreItems,"more");renderChecks("lessOptions",lessItems,"less");}
   if(currentStep===3) renderNeeds();
   if(currentStep===4) renderValues();
-  if(currentStep===5){renderChecks("actionOptions",actions,"actions");updateSummary();}
+  if(currentStep===5){renderChecks("actionOptions",actions,"actions");updateSummary();bindShareSummary();}
 
   hydrateInputs();
   bindSaveInputs();
-
-  if(currentStep===5){
-    const shareBox = document.getElementById("shareSummaryConsent");
-    if(shareBox){
-      shareBox.checked = Boolean(state.shareSummaryConsent);
-      shareBox.addEventListener("change", (e)=>{
-        state.shareSummaryConsent = Boolean(e.target.checked);
-        persist();
-      });
-    }
-  }
 
   document.getElementById("prevBtn")?.addEventListener("click",()=>{saveVisible();currentStep=Math.max(1,currentStep-1);persist();render();});
   document.getElementById("nextBtn")?.addEventListener("click",async()=>{
@@ -247,14 +254,10 @@ function render(){
     btn.disabled=true;
     btn.textContent="GUARDANDO…";
     try{
-      const result = await syncSummaryToBrevo();
-      const shared = result.shared === true || result.shareSummary === true;
-      if(status) status.textContent = shared
-        ? "✓ Guía completada y resumen compartido con QVB"
-        : "✓ Guía completada. Tus respuestas permanecen privadas.";
+      await syncLead({completed:true});
+      if(status) status.textContent="✓ Guía completada y registrada en QVB";
       btn.textContent="✓ FINALIZADA";
-    }catch(err){
-      console.error("QVB summary sync error:", err);
+    }catch{
       if(status) status.textContent="Tu guía quedó guardada en este dispositivo. El registro online no pudo actualizarse.";
       btn.disabled=false;
       btn.textContent="Finalizar";

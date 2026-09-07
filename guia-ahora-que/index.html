@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>¿Y ahora qué? · Guía interactiva QVB</title>
   <meta name="description" content="Una guía interactiva de Quiero Vivir Bien para ayudarte a identificar dónde estás y cuál podría ser tu próximo paso." />
-  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./styles.css?v=20260906-final" />
 </head>
 <body>
   <div id="leadGate" class="lead-gate" aria-labelledby="gateTitle">
@@ -249,8 +249,10 @@
           <label class="consent-row share-consent">
             <input type="checkbox" id="shareSummaryConsent">
             <span><strong>Quiero compartir mi resumen con Catalina.</strong><br>
-            Si marcas esta opción, QVB guardará tus respuestas estructuradas (necesidades, prioridades, valores y próximo paso) para poder orientarte mejor si decides agendar. Tus reflexiones abiertas de los pasos 1, 2 y 4 permanecen privadas en este dispositivo.</span>
+            Se compartirán solo tus respuestas estructuradas de esta guía para poder orientarte mejor si decides agendar. Tus reflexiones abiertas permanecen privadas en este dispositivo.</span>
           </label>
+          <button id="shareSummaryBtn" class="primary-btn share-summary-btn" type="button" disabled>COMPARTIR MI RESUMEN →</button>
+          <p id="shareSummaryStatus" class="form-status" role="status" aria-live="polite"></p>
         </div>
         <div class="result-actions"><button id="copySummaryBtn" class="ghost-btn">Copiar resumen</button><span id="completionStatus" class="completion-status"></span></div>
       </div>
@@ -269,6 +271,6 @@
     </aside>
   </template>
 
-  <script src="./script.js"></script>
+  <script src="./script.js?v=20260906-final"></script>
 </body>
 </html>
