@@ -56,6 +56,19 @@ module.exports = async function handler(req, res) {
     }
   }
 
+  console.log("QVB_SUMMARY_DIAG", {
+    shareSummary,
+    needsCount: Array.isArray(summary.needs) ? summary.needs.length : 0,
+    moreCount: Array.isArray(summary.more) ? summary.more.length : 0,
+    lessCount: Array.isArray(summary.less) ? summary.less.length : 0,
+    valuesCount: Array.isArray(summary.values) ? summary.values.length : 0,
+    hasPriorityArea: Boolean(summary.priorityArea),
+    hasNextStep: Boolean(summary.nextStep),
+    actionsCount: Array.isArray(summary.actions) ? summary.actions.length : 0,
+    hasTargetDate: Boolean(summary.targetDate),
+    fieldsSent: Object.keys(attributes)
+  });
+
   try {
     // Use Brevo's UPDATE CONTACT endpoint directly. This avoids any ambiguity
     // from create-contact + updateEnabled and updates the existing lead by email.
